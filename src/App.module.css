@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+  background-color: #ffffff;
+  display: flex;
+}
+
+.leftPanel {
+  background-color: #ebebeb;
+  padding: 0.5rem 1rem;
+}

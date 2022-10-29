@@ -1,0 +1,18 @@
+.input {
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  width: 80%;
+  margin-bottom: 1em;
+}
+
+.btn {
+  border: none;
+  padding: 0.5em 3em;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+}
