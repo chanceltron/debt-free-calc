@@ -6,9 +6,34 @@ class PaymentHistory extends React.Component {
     return (
       <div>
         <h4>Payment History</h4>
-        <ul>
-          <HistoryList></HistoryList>
+        <ul className={HistoryCSS.list}>
+          <li className={HistoryCSS.listItem}>
+            <div className={HistoryCSS.paymentDate}>10/28/2022</div>
+            <div className={HistoryCSS.paymentAmount}>$867.42</div>
+            <div className={HistoryCSS.totalLeft}>$37,272.90</div>
+          </li>
+          <li className={HistoryCSS.listItem}>
+            <div className={HistoryCSS.paymentDate}>09/28/2022</div>
+            <div className={HistoryCSS.paymentAmount}>$867.42</div>
+            <div className={HistoryCSS.totalLeft}>$38,140.32</div>
+          </li>
+          <li className={HistoryCSS.listItem}>
+            <div className={HistoryCSS.paymentDate}>08/28/2022</div>
+            <div className={HistoryCSS.paymentAmount}>$867.42</div>
+            <div className={HistoryCSS.totalLeft}>$39,007.74</div>
+          </li>
+          <li className={HistoryCSS.listItem}>
+            <div className={HistoryCSS.paymentDate}>07/28/2022</div>
+            <div className={HistoryCSS.paymentAmount}>$867.42</div>
+            <div className={HistoryCSS.totalLeft}>$39,875.16</div>
+          </li>
+          <li className={HistoryCSS.listItem}>
+            <div className={HistoryCSS.paymentDate}>06/28/2022</div>
+            <div className={HistoryCSS.paymentAmount}>$867.42</div>
+            <div className={HistoryCSS.totalLeft}>$40,742.58</div>
+          </li>
         </ul>
+        <a>show more history</a>
       </div>
     );
   }

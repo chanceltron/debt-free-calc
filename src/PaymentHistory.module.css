@@ -1,0 +1,22 @@
+.list {
+  margin: 0;
+  padding: 0 2rem;
+  list-style-type: none;
+}
+
+.listItem {
+  display: flex;
+  width: 100%;
+}
+
+.paymentDate {
+  padding-right: 30px;
+}
+
+.paymentAmount {
+}
+
+.totalLeft {
+  text-align: right;
+  width: 100%;
+}
