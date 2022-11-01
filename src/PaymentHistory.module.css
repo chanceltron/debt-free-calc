@@ -1,3 +1,7 @@
+.sectionHeader {
+  margin: 0.2em 0;
+}
+
 .list {
   margin: 0;
   padding: 0 2rem;
@@ -13,10 +17,24 @@
   padding-right: 30px;
 }
 
-.paymentAmount {
-}
-
 .totalLeft {
   text-align: right;
   width: 100%;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.paymentBtn {
+  margin: 1rem 0;
+  border: none;
+  padding: 1em 2em;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
 }

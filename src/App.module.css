@@ -2,9 +2,23 @@
   text-align: center;
   background-color: #ffffff;
   display: flex;
+  justify-content: space-evenly;
 }
 
 .leftPanel {
   background-color: #ebebeb;
   padding: 0.5rem 1rem;
+  max-width: 500px;
+  border-radius: 5px;
+  /* box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.2); */
+}
+
+.sectionHeader {
+  text-align: left;
+  padding-left: 1em;
+}
+
+.rightPanel {
+  padding: 0.5rem 1rem;
+  max-width: 400px;
 }

@@ -5,7 +5,7 @@ class PaymentHistory extends React.Component {
   render() {
     return (
       <div>
-        <h4>Payment History</h4>
+        <h4 className={HistoryCSS.sectionHeader}>Payment History</h4>
         <ul className={HistoryCSS.list}>
           <li className={HistoryCSS.listItem}>
             <div className={HistoryCSS.paymentDate}>10/28/2022</div>
@@ -33,7 +33,12 @@ class PaymentHistory extends React.Component {
             <div className={HistoryCSS.totalLeft}>$40,742.58</div>
           </li>
         </ul>
-        <a>show more history</a>
+        <div>
+          <a href='#' className={HistoryCSS.link}>
+            show more history
+          </a>
+        </div>
+        <button className={HistoryCSS.paymentBtn}>Make A Payment</button>
       </div>
     );
   }
