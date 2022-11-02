@@ -1,9 +1,9 @@
 import React from 'react';
 import AppCSS from './App.module.css';
 
-import Form from './Form';
-import PaymentHistory from './PaymentHistory';
-import DebtNumbers from './DebtNumbers';
+import Form from './Components/Form';
+import PaymentHistory from './Components/PaymentHistory';
+import DebtNumbers from './Components/DebtNumbers';
 
 function App() {
   return (

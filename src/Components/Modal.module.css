@@ -1,0 +1,107 @@
+.modalBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.modalContainer {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.titleClose {
+  text-align: right;
+}
+
+.titleCloseBtn {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.body {
+  padding: 1rem 0;
+}
+
+.inputContainer {
+  border: 4px solid #ebebeb;
+  border-radius: 20px;
+}
+
+.inputLabel {
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #aaaaaa;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.inputContainer:focus-within {
+  border: 4px solid #6b6dd7;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cancelBtn {
+  background-color: #ebebeb;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.proceedBtn {
+  background-color: #4dc24b;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.cancelBtn:hover {
+  background-color: #d1d1d1;
+}
+
+.proceedBtn:hover {
+  background-color: #328831;
+}
