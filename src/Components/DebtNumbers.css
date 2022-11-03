@@ -1,8 +1,13 @@
+.debtTracker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .totalDebtSection {
   background-color: #6b6dd7;
   color: #ffffff;
   padding: 2rem 5rem;
-  /* width: 80%; */
 }
 
 .sectionHeader {
@@ -17,16 +22,8 @@
   font-weight: 700;
 }
 
-.subtotalSection {
-  padding: 2rem 5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.subtotalDebt {
-  font-size: 2.2rem;
+.minimumPayment {
+  font-size: 3rem;
   margin: 0;
   font-weight: 700;
-  color: #4dc24b;
 }

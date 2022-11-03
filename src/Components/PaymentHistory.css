@@ -1,16 +1,23 @@
-.sectionHeader {
-  margin: 0.2em 0;
+/* .historyContainer {
+  max-width: 60vw;
+  margin: 0 auto;
+  padding-inline:
+} */
+
+.historyTitle {
+  font-size: 1.2rem;
 }
 
 .list {
   margin: 0;
-  padding: 0 2rem;
+  padding: 0 1.4rem;
   list-style-type: none;
 }
 
 .listItem {
   display: flex;
   width: 100%;
+  margin-bottom: 4px;
 }
 
 .paymentDate {
@@ -29,12 +36,9 @@
 
 .paymentBtn {
   margin: 1rem 0;
-  border: none;
   padding: 1em 2em;
-  border-radius: 4px;
   background-color: #4caf50;
   color: #ffffff;
-  cursor: pointer;
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: 500;
 }

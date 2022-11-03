@@ -1,0 +1,91 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.4rem;
+}
+
+.label {
+  text-align: left;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input {
+  border: none;
+  background-color: transparent;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+}
+
+input:focus {
+  outline: none;
+}
+
+.inputContainer {
+  border: 4px solid #ebebeb;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.inputContainer:focus-within {
+  border: 4px solid #6b6dd7;
+}
+
+.inputLabel {
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #aaaaaa;
+}
+
+.btn {
+  font-size: 1rem;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.link {
+  color: #4189f5;
+  font-size: 0.8rem;
+}
+
+.round-pill {
+  border-radius: 20px;
+}
+
+.cancelBtn {
+  background-color: #ebebeb;
+}
+
+.submitBtn {
+  background-color: #4dc24b;
+  color: #ffffff;
+}
+
+.cancelBtn:hover {
+  background-color: #d1d1d1;
+}
+
+.submitBtn:hover {
+  background-color: #328831;
+}

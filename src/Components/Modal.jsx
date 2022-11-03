@@ -1,32 +1,33 @@
 import React from 'react';
+import './Modal.css';
 
-import ModalCSS from './Modal.module.css';
+// import ModalCSS from './Modal.module.css';
 
-function Modal({ closeModal }) {
+function Modal({ openModal }) {
   return (
-    <div className={ModalCSS.modalBg}>
-      <div className={ModalCSS.modalContainer}>
-        <div className={ModalCSS.titleClose}></div>
-        <div className={ModalCSS.header}>
-          <h2 className={ModalCSS.title}>Make A Payment</h2>
-          <button className={ModalCSS.titleCloseBtn} onClick={() => closeModal(false)}>
+    <div className='modalBg'>
+      <div className='modalContainer'>
+        <div className='modalHeader'>
+          <h2 className='modalTitle'>Make A Payment</h2>
+          <button className='modalCloseBtn' onClick={() => openModal(false)}>
             {' '}
             X{' '}
           </button>
         </div>
-        <div className={ModalCSS.body}>
-          <div className={ModalCSS.inputContainer}>
-            <label className={ModalCSS.inputLabel} htmlFor='paymentAmount'>
+        <div className='modalBody'>
+          <div className='label'>Payment Amount</div>
+          <div className='inputContainer round-pill'>
+            <label className='inputLabel' htmlFor='paymentAmount'>
               $
             </label>
-            <input className={ModalCSS.input} name='paymentAmount' type='number' />
+            <input name='paymentAmount' type='number' />
           </div>
         </div>
-        <div className={ModalCSS.footer}>
-          <button className={ModalCSS.cancelBtn} onClick={() => closeModal(false)}>
+        <div className='modalFooter'>
+          <button className='btn cancelBtn round-pill' onClick={() => openModal(false)}>
             Cancel
           </button>
-          <button className={ModalCSS.proceedBtn}>Proceed</button>
+          <button className='btn submitBtn round-pill'>Proceed</button>
         </div>
       </div>
     </div>

@@ -1,50 +1,41 @@
 import React from 'react';
-import { useState } from 'react';
-import HistoryCSS from './PaymentHistory.module.css';
-import Modal from './Modal';
+import '../Base.css';
+import './PaymentHistory.css';
 
 function PaymentHistory() {
-  const [openModal, setOpenModal] = useState(false);
-
   return (
-    <div>
-      <h4 className={HistoryCSS.sectionHeader}>Payment History</h4>
-      <ul className={HistoryCSS.list}>
-        <li className={HistoryCSS.listItem}>
-          <div className={HistoryCSS.paymentDate}>10/28/2022</div>
-          <div className={HistoryCSS.paymentAmount}>$867.42</div>
-          <div className={HistoryCSS.totalLeft}>$37,272.90</div>
+    <div className='historyContainer'>
+      <h4 className='historyTitle'>Payment History</h4>
+      <ul className='list'>
+        <li className='listItem'>
+          <div className='paymentDate'>10/28/2022</div>
+          <div className='paymentAmount'>$867.42</div>
+          <div className='totalLeft'>$37,272.90</div>
         </li>
-        <li className={HistoryCSS.listItem}>
-          <div className={HistoryCSS.paymentDate}>09/28/2022</div>
-          <div className={HistoryCSS.paymentAmount}>$867.42</div>
-          <div className={HistoryCSS.totalLeft}>$38,140.32</div>
+        <li className='listItem'>
+          <div className='paymentDate'>09/28/2022</div>
+          <div className='paymentAmount'>$867.42</div>
+          <div className='totalLeft'>$38,140.32</div>
         </li>
-        <li className={HistoryCSS.listItem}>
-          <div className={HistoryCSS.paymentDate}>08/28/2022</div>
-          <div className={HistoryCSS.paymentAmount}>$867.42</div>
-          <div className={HistoryCSS.totalLeft}>$39,007.74</div>
+        <li className='listItem'>
+          <div className='paymentDate'>08/28/2022</div>
+          <div className='paymentAmount'>$867.42</div>
+          <div className='totalLeft'>$39,007.74</div>
         </li>
-        <li className={HistoryCSS.listItem}>
-          <div className={HistoryCSS.paymentDate}>07/28/2022</div>
-          <div className={HistoryCSS.paymentAmount}>$867.42</div>
-          <div className={HistoryCSS.totalLeft}>$39,875.16</div>
+        <li className='listItem'>
+          <div className='paymentDate'>07/28/2022</div>
+          <div className='paymentAmount'>$867.42</div>
+          <div className='totalLeft'>$39,875.16</div>
         </li>
-        <li className={HistoryCSS.listItem}>
-          <div className={HistoryCSS.paymentDate}>06/28/2022</div>
-          <div className={HistoryCSS.paymentAmount}>$867.42</div>
-          <div className={HistoryCSS.totalLeft}>$40,742.58</div>
+        <li className='listItem'>
+          <div className='paymentDate'>06/28/2022</div>
+          <div className='paymentAmount'>$867.42</div>
+          <div className='totalLeft'>$40,742.58</div>
         </li>
       </ul>
       <div>
-        <a href='#' className={HistoryCSS.link}>
-          show more history
-        </a>
+        <button className='btn link'>show more history</button>
       </div>
-      <button onClick={() => setOpenModal(true)} className={HistoryCSS.paymentBtn}>
-        Make A Payment
-      </button>
-      {openModal && <Modal closeModal={setOpenModal} />}
     </div>
   );
 }

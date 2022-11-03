@@ -1,0 +1,14 @@
+.formInput {
+  width: 80%;
+  padding-inline: 1rem;
+}
+
+.formBtn {
+  background-color: #6b6dd7;
+  color: #ffffff;
+  margin-block: 0.5rem;
+}
+
+.formBtn:hover {
+  background-color: #4e4fa1;
+}

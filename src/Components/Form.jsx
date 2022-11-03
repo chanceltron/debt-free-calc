@@ -1,13 +1,24 @@
 import React from 'react';
-import FormCSS from './Form.module.css';
+import '../Base.css';
+import './Form.css';
 
 function Form() {
   return (
     <div>
       <form action='handleCalc'>
-        <input className={FormCSS.input} type='number' placeholder='Debt Amount' />
-        <input className={FormCSS.input} type='number' placeholder='Interest Rate' />
-        <button className={FormCSS.btn}>Calculate</button>
+        <div className='inputContainer'>
+          <label htmlFor='debtAmount' className='inputLabel'>
+            $
+          </label>
+          <input className='formInput' type='number' placeholder='Debt Amount' />
+        </div>
+        <div className='inputContainer'>
+          <label htmlFor='interestRate' className='inputLabel'>
+            %
+          </label>
+          <input className='formInput' type='number' placeholder='Interest Rate' />
+        </div>
+        <button className='btn formBtn'>Calculate</button>
       </form>
     </div>
   );

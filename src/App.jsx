@@ -1,20 +1,31 @@
 import React from 'react';
-import AppCSS from './App.module.css';
+import { useState } from 'react';
+
+import './App.css';
 
 import Form from './Components/Form';
 import PaymentHistory from './Components/PaymentHistory';
 import DebtNumbers from './Components/DebtNumbers';
+import Modal from './Components/Modal';
 
 function App() {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
-    <div className={AppCSS.App}>
-      <div className={AppCSS.leftPanel}>
-        <h2 className={AppCSS.sectionHeader}>Debt-Free Calculator</h2>
-        <Form></Form>
-        <PaymentHistory></PaymentHistory>
-      </div>
-      <div className={AppCSS.rightPanel}>
-        <DebtNumbers></DebtNumbers>
+    <div>
+      <div className='App'>
+        <div className='leftPanel'>
+          <h2 className='appHeader'>Debt-Free Calculator</h2>
+          <Form></Form>
+          <PaymentHistory></PaymentHistory>
+          <button onClick={() => setOpenModal(true)} className='btn submitBtn paymentBtn'>
+            Make A Payment
+          </button>
+          {openModal && <Modal openModal={setOpenModal} />}
+        </div>
+        <div className='rightPanel'>
+          <DebtNumbers></DebtNumbers>
+        </div>
       </div>
     </div>
   );
