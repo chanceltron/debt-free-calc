@@ -1,15 +1,15 @@
 import React from 'react';
+
+import '../Base.css';
 import './Modal.css';
 
-// import ModalCSS from './Modal.module.css';
-
-function Modal({ openModal }) {
+const Modal = ({ setModalState }) => {
   return (
     <div className='modalBg'>
       <div className='modalContainer'>
         <div className='modalHeader'>
           <h2 className='modalTitle'>Make A Payment</h2>
-          <button className='modalCloseBtn' onClick={() => openModal(false)}>
+          <button className='modalCloseBtn' onClick={() => setModalState(false)}>
             {' '}
             X{' '}
           </button>
@@ -24,7 +24,7 @@ function Modal({ openModal }) {
           </div>
         </div>
         <div className='modalFooter'>
-          <button className='btn cancelBtn round-pill' onClick={() => openModal(false)}>
+          <button className='btn cancelBtn round-pill' onClick={() => setModalState(false)}>
             Cancel
           </button>
           <button className='btn submitBtn round-pill'>Proceed</button>
@@ -32,6 +32,6 @@ function Modal({ openModal }) {
       </div>
     </div>
   );
-}
+};
 
 export default Modal;

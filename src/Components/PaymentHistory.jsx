@@ -1,8 +1,9 @@
 import React from 'react';
+
 import '../Base.css';
 import './PaymentHistory.css';
 
-function PaymentHistory() {
+const PaymentHistory = () => {
   return (
     <div className='historyContainer'>
       <h4 className='historyTitle'>Payment History</h4>
@@ -38,6 +39,6 @@ function PaymentHistory() {
       </div>
     </div>
   );
-}
+};
 
 export default PaymentHistory;
