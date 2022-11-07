@@ -10,7 +10,7 @@
 .leftPanel {
   background-color: #ebebeb;
   padding: 0.5rem 1rem;
-  min-width: 400px;
+  min-width: 360px;
   max-width: 500px;
   border-radius: 5px;
 }
@@ -23,6 +23,5 @@
 .rightPanel {
   padding: 0.5rem 1rem;
   max-width: 500px;
-  min-width: 400px;
-  height: 100%;
+  min-width: 360px;
 }

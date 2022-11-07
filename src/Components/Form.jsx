@@ -12,8 +12,9 @@ const Form = (props) => {
 
     const interestRateCalc = interestRate / Math.pow(10, 2);
     const interest = interestRateCalc * debtPrincipal;
-    const debtTotal = parseFloat(interest) + parseFloat(debtPrincipal);
-    console.log(debtTotal);
+    const debtTotalCalc = Number(interest) + Number(debtPrincipal);
+    const debtTotal = debtTotalCalc.toFixed(2);
+    props.setDebtTotal(debtTotal);
   };
 
   return (

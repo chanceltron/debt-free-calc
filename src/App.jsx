@@ -9,6 +9,7 @@ import DebtNumbers from './Components/DebtNumbers';
 import Modal from './Components/Modal';
 
 const App = () => {
+  const [debtTotal, setDebtTotal] = useState('');
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -16,15 +17,15 @@ const App = () => {
       <div className='App'>
         <div className='leftPanel'>
           <h2 className='appHeader'>Debt-Free Calculator</h2>
-          <Form />
+          <Form setDebtTotal={(debtTotal) => setDebtTotal(debtTotal)} />
           <PaymentHistory />
           <button onClick={() => setOpenModal(true)} className='btn submitBtn paymentBtn'>
             Make A Payment
           </button>
-          {openModal && <Modal setModalState={setOpenModal} />}
+          {openModal && <Modal setModalState={setOpenModal} debtTotal={debtTotal} setDebtTotal={(debtTotal) => setDebtTotal(debtTotal)} />}
         </div>
         <div className='rightPanel'>
-          <DebtNumbers />
+          <DebtNumbers debtTotal={debtTotal} />
         </div>
       </div>
     </div>
