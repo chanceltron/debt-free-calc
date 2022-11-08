@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import Modal from './Modal';
 
 import '../Base.css';
 import './PaymentHistory.css';
 
-const PaymentHistory = () => {
+const PaymentHistory = ({ totalDebt }) => {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div className='historyContainer'>
       <h4 className='historyTitle'>Payment History</h4>
@@ -37,6 +40,11 @@ const PaymentHistory = () => {
       <div>
         <button className='btn link'>show more history</button>
       </div>
+      <button onClick={() => setOpenModal(true)} className='btn submitBtn paymentBtn'>
+        Make A Payment
+      </button>
+      {openModal && <Modal setModalState={setOpenModal} />}
+      <div>Total Debt: ${totalDebt}</div>
     </div>
   );
 };
