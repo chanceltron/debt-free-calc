@@ -1,12 +1,23 @@
+.initialForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputContainer {
+  margin-bottom: 1rem;
+}
+
 .formInput {
-  width: 79%;
+  width: 70%;
   padding-inline: 1rem;
 }
 
 .formBtn {
+  margin: 0.5rem auto;
   background-color: #6b6dd7;
   color: #ffffff;
-  margin-block: 0.5rem;
 }
 
 .formBtn:hover {

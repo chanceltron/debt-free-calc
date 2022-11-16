@@ -1,17 +1,12 @@
-/* .historyContainer {
-  max-width: 60vw;
-  margin: 0 auto;
-  padding-inline:
-} */
-
 .historyTitle {
   font-size: 1.2rem;
 }
 
-.list {
-  margin: 0;
+.paymentList {
+  margin: 0 auto;
   padding: 0 1.4rem;
   list-style-type: none;
+  max-width: 340px;
 }
 
 .listItem {
@@ -32,13 +27,4 @@
 .link {
   text-decoration: none;
   font-size: 0.8rem;
-}
-
-.paymentBtn {
-  margin: 1rem 0;
-  padding: 1em 2em;
-  background-color: #4caf50;
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 500;
 }

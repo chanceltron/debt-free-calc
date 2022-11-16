@@ -15,11 +15,15 @@ const Form = (props) => {
     const debtTotalCalc = Number(interest) + Number(debtPrincipal);
     const debtTotal = debtTotalCalc.toFixed(2);
     props.setDebtTotal(debtTotal);
+
+    const dividedNum = debtTotal / 12;
+    const twoDecimal = dividedNum.toFixed(2);
+    props.setMonthlyPayments('$' + twoDecimal);
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className='initialForm' onSubmit={handleSubmit}>
         <div className='inputContainer'>
           <label htmlFor='debtPrincipal' className='inputLabel'>
             $
