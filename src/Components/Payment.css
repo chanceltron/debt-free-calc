@@ -6,3 +6,29 @@
   font-size: 1.1rem;
   font-weight: 500;
 }
+
+.resetBtn {
+  margin: 1rem 0;
+  padding: 1em 2em;
+  background-color: #6b6dd7;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.paymentBtn:hover {
+  background-color: #388e3c;
+}
+
+.resetBtn:hover {
+  background-color: #4e4fa1;
+}
+
+.inputContainer.alert {
+  border-color: #d85854;
+  color: #eb2821;
+}
+
+.hidden {
+  display: none;
+}

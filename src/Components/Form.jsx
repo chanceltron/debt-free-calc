@@ -7,18 +7,21 @@ const Form = (props) => {
   const [debtPrincipal, setDebtPrincipal] = useState('');
   const [interestRate, setInterestRate] = useState('');
 
+  const typeNumberHandler = () => {
+    debtPrincipal.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const interestRateCalc = interestRate / Math.pow(10, 2);
     const interest = interestRateCalc * debtPrincipal;
-    const debtTotalCalc = Number(interest) + Number(debtPrincipal);
-    const debtTotal = debtTotalCalc.toFixed(2);
+    const debtTotal = Number(interest) + Number(debtPrincipal);
     props.setDebtTotal(debtTotal);
 
     const dividedNum = debtTotal / 12;
-    const twoDecimal = dividedNum.toFixed(2);
-    props.setMonthlyPayments('$' + twoDecimal);
+    const monthlyPayment = dividedNum.toFixed(2);
+    props.setMonthlyPayments(Number(monthlyPayment));
   };
 
   return (

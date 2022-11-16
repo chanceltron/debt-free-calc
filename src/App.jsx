@@ -7,17 +7,16 @@ import Form from './Components/Form';
 import Payment from './Components/Payment';
 
 const App = () => {
-  const [debtTotal, setDebtTotal] = useState('0');
-  const [monthlyPayments, setMonthlyPayments] = useState('0');
+  const [debtTotal, setDebtTotal] = useState('-');
+  const [monthlyPayments, setMonthlyPayments] = useState('-');
 
-  const numberWithCommas = () => {
-    const number = debtTotal * 1;
-    const twoDecimal = number.toFixed(2);
-    const addThoseCommas = twoDecimal.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
-    if (debtTotal < 0) {
-      return 'You are Debt Free!';
+  const readableFormat = (number) => {
+    if (isNaN(number) || number < 0) {
+      return '$0';
     } else {
-      return '$ ' + addThoseCommas;
+      const fixedNum = Number(number).toFixed(2);
+      const addComma = fixedNum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+      return '$' + addComma;
     }
   };
 
@@ -30,16 +29,16 @@ const App = () => {
           <div className='debtTracker round-pill'>
             <div className='totalDebtSection round-pill'>
               <h2 className='header'>Total Debt</h2>
-              <div className='totalDebt'>{numberWithCommas()}</div>
+              <div className='totalDebt'>{readableFormat(debtTotal)}</div>
             </div>
             <div className='monthlyPaymentSection'>
               <h2 className='subheader'>Monthly Minimum Payment</h2>
-              <div className='minimumPayment'>{monthlyPayments}</div>
+              <div className='minimumPayment'>{readableFormat(monthlyPayments)}</div>
             </div>
           </div>
         </div>
         <div className='bottomPanel'></div>
-        <Payment debtTotal={debtTotal} setDebtTotal={(debtTotal) => setDebtTotal(debtTotal)} />
+        <Payment debtTotal={debtTotal} setDebtTotal={(debtTotal) => setDebtTotal(debtTotal)} monthlyPayments={monthlyPayments} />
       </div>
     </div>
   );
