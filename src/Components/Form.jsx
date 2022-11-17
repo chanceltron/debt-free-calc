@@ -52,7 +52,7 @@ export default class Form extends React.Component {
               type='text'
               // value={this.state.debtPrincipal}
               onChange={({ target: { value } }) => this.setState({ debtPrincipal: value })}
-              placeholder='Debt Amount'
+              placeholder='Loan Amount'
               required
             />
           </div>

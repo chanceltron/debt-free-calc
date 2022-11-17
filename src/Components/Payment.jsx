@@ -59,7 +59,7 @@ export default class Payment extends React.Component {
     return (
       <div className='paymentContainer'>
         <div className='makePayment'>
-          <h1>Make a Payment</h1>
+          <h1>Manage your Account</h1>
           <form>
             <div className={`inputContainer paymentInput ${this.state.paymentAlert ? 'alert' : ''}`}>
               <label htmlFor='debtPrincipal' className='inputLabel'>
@@ -69,7 +69,7 @@ export default class Payment extends React.Component {
                 className='formInput'
                 type='text'
                 value={this.state.paymentAmount}
-                placeholder='Make a Payment'
+                placeholder='Payment Amount'
                 onChange={({ target: { value } }) => this.setState({ paymentAmount: value })}
                 required
               />
