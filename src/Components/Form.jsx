@@ -47,27 +47,13 @@ export default class Form extends React.Component {
             <label htmlFor='debtPrincipal' className='inputLabel'>
               $
             </label>
-            <input
-              className='formInput'
-              type='text'
-              // value={this.state.debtPrincipal}
-              onChange={({ target: { value } }) => this.setState({ debtPrincipal: value })}
-              placeholder='Loan Amount'
-              required
-            />
+            <input className='formInput' type='text' onChange={({ target: { value } }) => this.setState({ debtPrincipal: value })} placeholder='Loan Amount' required />
           </div>
           <div className='inputContainer'>
             <label htmlFor='interestRate' className='inputLabel'>
               %
             </label>
-            <input
-              className='formInput'
-              type='text'
-              // value={this.state.interestRate}
-              onChange={({ target: { value } }) => this.setState({ interestRate: value })}
-              placeholder='Interest Rate'
-              required
-            />
+            <input className='formInput' type='text' onChange={({ target: { value } }) => this.setState({ interestRate: value })} placeholder='Interest Rate' required />
           </div>
 
           <div className='buttonGroup'>
