@@ -1,6 +1,5 @@
 import React from 'react';
 import PaymentList from './PaymentList';
-import '../Base.css';
 import './Payment.css';
 
 export default class Payment extends React.Component {
