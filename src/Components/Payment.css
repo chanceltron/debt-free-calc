@@ -44,3 +44,9 @@
 .hidden {
   display: none;
 }
+
+.makePayment h1 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
