@@ -1,71 +1,89 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PaymentList from './PaymentList';
 import '../Base.css';
 import './Payment.css';
 
-const Payment = ({ debtTotal, setDebtTotal, monthlyPayments }) => {
-  const [paymentAmount, setPaymentAmount] = useState('');
-  const [payments, setPayments] = useState([]);
-  const [paymentAlert, setPaymentAlert] = useState(false);
-  const [paymentBtnVisible, setPaymentBtnVisible] = useState(true);
-  const [resetBtnVisible, setResetBtnVisible] = useState(false);
+export default class Payment extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      paymentAmount: '',
+      paymentArray: [],
+      paymentAlert: false,
+      paymentBtnVisible: true,
+      resetBtnVisible: false,
+    };
+  }
 
-  const handleReset = () => document.location.reload();
+  completeHandler = () => {
+    this.setState({ paymentBtnVisible: false, resetBtnVisible: true });
+    this.props.debtUpdateHandler('-');
+  };
 
-  const handleSubmit = (e) => {
+  handleReset = () => document.location.reload();
+
+  handleSubmit = (e) => {
     e.preventDefault();
     const today = new Date();
     const currentDate = today.getMonth() + 1 + '/' + today.getDate() + '/' + today.getFullYear();
 
-    if (paymentAmount < monthlyPayments) {
-      setPaymentAlert(true);
-      setPaymentAmount('Looks like your payment is a little short. Please try again.');
-    } else if (isNaN(paymentAmount)) {
-      setPaymentAlert(true);
-      setPaymentAmount('Please enter a valid number');
+    if (this.state.paymentAmount < this.props.monthlyPayment) {
+      this.setState({ paymentAlert: true, paymentAmount: 'Looks like your payment is a little short. Please try again.' });
+    } else if (isNaN(this.state.paymentAmount)) {
+      this.setState({ paymentAlert: true, paymentAmount: 'Please enter a valid number' });
     } else {
       const newPayment = {
         id: Date.now(),
         date: currentDate,
-        paymentAmount: Number(paymentAmount),
-        totalLeft: Number(debtTotal) - Number(paymentAmount),
+        paymentAmount: Number(this.state.paymentAmount),
+        totalLeft: Number(this.props.debtTotal) - Number(this.state.paymentAmount),
       };
 
-      setDebtTotal(newPayment.totalLeft);
+      this.props.debtUpdateHandler(newPayment.totalLeft);
 
-      setPayments([...payments, newPayment]);
-      if (paymentAlert) {
-        setPaymentAlert(false);
+      this.setState((prevState) => ({ paymentArray: [...prevState.paymentArray, newPayment] }));
+
+      if (this.state.paymentAlert) {
+        this.setState({ paymentAlert: false });
       }
-    }
-    if (debtTotal <= 0) {
-      setPaymentBtnVisible(false);
-      setResetBtnVisible(true);
     }
   };
 
-  return (
-    <div className='container'>
-      <div className='makePayment'>
-        <h1>Make a Payment</h1>
-        <form>
-          <div className={`inputContainer ${paymentAlert ? 'alert' : ''}`}>
-            <label htmlFor='debtPrincipal' className='inputLabel'>
-              $
-            </label>
-            <input className='formInput' type='text' value={paymentAmount} placeholder='Make a Payment' onChange={(e) => setPaymentAmount(e.target.value)} required />
-          </div>
-          <button onClick={handleSubmit} className={`btn paymentBtn ${paymentBtnVisible ? '' : 'hidden'}`}>
-            Make Payment
-          </button>
-          <button onClick={handleReset} className={`btn resetBtn ${resetBtnVisible ? '' : 'hidden'}`}>
-            Start Another Loan
-          </button>
-        </form>
-      </div>
-      <PaymentList payments={payments}></PaymentList>
-    </div>
-  );
-};
+  componentDidUpdate() {
+    if (this.props.debtTotal <= 0) {
+      this.completeHandler();
+    }
+  }
 
-export default Payment;
+  render() {
+    return (
+      <div className='paymentContainer'>
+        <div className='makePayment'>
+          <h1>Make a Payment</h1>
+          <form>
+            <div className={`inputContainer paymentInput ${this.state.paymentAlert ? 'alert' : ''}`}>
+              <label htmlFor='debtPrincipal' className='inputLabel'>
+                $
+              </label>
+              <input
+                className='formInput'
+                type='text'
+                value={this.state.paymentAmount}
+                placeholder='Make a Payment'
+                onChange={({ target: { value } }) => this.setState({ paymentAmount: value })}
+                required
+              />
+            </div>
+            <button onClick={this.handleSubmit} className={`btn paymentBtn ${this.state.paymentBtnVisible ? '' : 'hidden'}`}>
+              Make Payment
+            </button>
+            <button onClick={this.handleReset} className={`btn resetBtn ${this.state.resetBtnVisible ? '' : 'hidden'}`}>
+              Start Another Loan
+            </button>
+          </form>
+        </div>
+        <PaymentList payments={this.state.paymentArray}></PaymentList>
+      </div>
+    );
+  }
+}

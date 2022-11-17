@@ -1,48 +1,86 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import '../Base.css';
 import './Form.css';
 
-const Form = (props) => {
-  const [debtPrincipal, setDebtPrincipal] = useState('');
-  const [interestRate, setInterestRate] = useState('');
+export default class Form extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      debtPrincipal: 0,
+      interestRate: 0,
+      termMonths: 12,
+    };
+  }
 
-  const typeNumberHandler = () => {
-    debtPrincipal.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+  handleSwitcher = (e) => {
+    e.preventDefault();
+
+    if (document.querySelector(`.switcherBtn.active`) !== null) {
+      document.querySelector(`.switcherBtn.active`).classList.remove('active');
+    }
+    e.target.classList.add('active');
+    this.setState({ termMonths: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
+    const { debtPrincipal, interestRate, termMonths } = this.state;
 
     const interestRateCalc = interestRate / Math.pow(10, 2);
     const interest = interestRateCalc * debtPrincipal;
-    const debtTotal = Number(interest) + Number(debtPrincipal);
-    props.setDebtTotal(debtTotal);
+    const debtTotalCalc = Number(interest) + Number(debtPrincipal);
+    const debtTotal = debtTotalCalc.toFixed(2);
 
-    const dividedNum = debtTotal / 12;
-    const monthlyPayment = dividedNum.toFixed(2);
-    props.setMonthlyPayments(Number(monthlyPayment));
+    const dividedNum = debtTotal / termMonths;
+    const monthlyPaymentAmnt = dividedNum.toFixed(2);
+
+    this.props.debtUpdateHandler(Number(debtTotal));
+    this.props.paymentUpdateHandler(Number(monthlyPaymentAmnt));
   };
 
-  return (
-    <div>
-      <form className='initialForm' onSubmit={handleSubmit}>
-        <div className='inputContainer'>
-          <label htmlFor='debtPrincipal' className='inputLabel'>
-            $
-          </label>
-          <input className='formInput' type='text' value={debtPrincipal} onChange={(e) => setDebtPrincipal(e.target.value)} placeholder='Debt Amount' required />
-        </div>
-        <div className='inputContainer'>
-          <label htmlFor='interestRate' className='inputLabel'>
-            %
-          </label>
-          <input className='formInput' type='text' value={interestRate} onChange={(e) => setInterestRate(e.target.value)} placeholder='Interest Rate' />
-        </div>
-        <button className='btn formBtn'>Calculate</button>
-      </form>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div>
+        <form className='initialForm' onSubmit={this.handleSubmit}>
+          <div className='inputContainer'>
+            <label htmlFor='debtPrincipal' className='inputLabel'>
+              $
+            </label>
+            <input
+              className='formInput'
+              type='text'
+              // value={this.state.debtPrincipal}
+              onChange={({ target: { value } }) => this.setState({ debtPrincipal: value })}
+              placeholder='Debt Amount'
+              required
+            />
+          </div>
+          <div className='inputContainer'>
+            <label htmlFor='interestRate' className='inputLabel'>
+              %
+            </label>
+            <input
+              className='formInput'
+              type='text'
+              // value={this.state.interestRate}
+              onChange={({ target: { value } }) => this.setState({ interestRate: value })}
+              placeholder='Interest Rate'
+              required
+            />
+          </div>
 
-export default Form;
+          <div className='buttonGroup'>
+            <button onClick={this.handleSwitcher} value='12' className='switcherBtn active'>
+              12 Mo.
+            </button>
+            <button onClick={this.handleSwitcher} value='24' className='switcherBtn'>
+              24 Mo.
+            </button>
+          </div>
+          <button className='btn formBtn'>Calculate</button>
+        </form>
+      </div>
+    );
+  }
+}

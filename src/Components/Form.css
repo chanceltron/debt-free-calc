@@ -7,6 +7,7 @@
 
 .inputContainer {
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 .formInput {
@@ -15,11 +16,48 @@
 }
 
 .formBtn {
-  margin: 0.5rem auto;
+  margin: 0 auto;
+  margin-bottom: 1rem;
   background-color: #6b6dd7;
   color: #ffffff;
 }
 
 .formBtn:hover {
+  background-color: #4e4fa1;
+}
+
+.buttonGroup {
+  border-radius: 20px;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  margin-bottom: 1rem;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.1);
+}
+
+.switcherBtn {
+  background: transparent;
+  border: none;
+  width: 50%;
+  font-size: 0.8rem;
+  font-weight: 700;
+  height: 42px;
+  padding-left: 15px;
+  padding-right: 15px;
+  letter-spacing: 1.4px;
+  cursor: pointer;
+}
+
+.switcherBtn.active {
+  background-color: #6b6dd7;
+  color: #fff;
+}
+
+.switcherBtn:hover {
+  background-color: #f2f2f2;
+}
+
+.switcherBtn.active:hover {
   background-color: #4e4fa1;
 }

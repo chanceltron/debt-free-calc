@@ -1,5 +1,74 @@
+body {
+  background-image: linear-gradient(120deg, #a2a3eb 0%, #6568f8 100%);
+  background-color: #f2f2f2;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #3e3e3e;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.4rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input {
+  border: none;
+  background-color: #fff;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+}
+
+input:focus {
+  outline: none;
+}
+
+.inputContainer {
+  background-color: #fff;
+  border-radius: 20px;
+  border: 4px solid #fff;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.1);
+}
+
+.inputContainer:focus-within {
+  border: 4px solid #6b6dd7;
+}
+
+.inputLabel {
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #aaaaaa;
+}
+
 .App {
   background-color: #f6f6f6;
+  width: fit-content;
+  margin: 30px auto;
+  border-radius: 20px;
+  padding: 10px 20px;
 }
 
 .topPanel {
@@ -22,7 +91,7 @@
 
 .debtTracker {
   background-color: #ffffff;
-  padding: 1.2rem 3rem;
+  padding: 1.2rem 2rem;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -31,12 +100,17 @@
 }
 
 .totalDebtSection {
-  padding: 1.2rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 2rem;
 }
 
 .header {
   margin: 0;
+  font-weight: 400;
+  font-size: 1.7rem;
+}
+
+.appHeader {
+  padding: 0.2em 0.6em;
   font-weight: 400;
   font-size: 1.7rem;
 }
@@ -58,4 +132,55 @@
   font-size: 2.1rem;
   margin: 0;
   font-weight: 700;
+}
+
+.btn {
+  font-size: 1rem;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.link {
+  color: #4189f5;
+  font-size: 0.8rem;
+}
+
+.label {
+  text-align: left;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}
+
+.round-pill {
+  border-radius: 20px;
+}
+
+.cancelBtn {
+  background-color: #ebebeb;
+}
+
+.submitBtn {
+  background-color: #4dc24b;
+  color: #ffffff;
+}
+
+.cancelBtn:hover {
+  background-color: #d1d1d1;
+}
+
+.submitBtn:hover {
+  background-color: #328831;
+}
+
+@media screen and (max-width: 480px) {
+  .App {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
 }
