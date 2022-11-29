@@ -14,13 +14,13 @@ export default class Payment extends React.Component {
     };
   }
 
-  handlePrincipal = (payment) => {
-    const newPrincipal = this.props.debtTotal - payment;
-    this.setState({ paymentAmount: payment });
-    this.props.setPrincipal(Number(newPrincipal));
+  handleInputs = ({ target: { value } }) => {
+    const newPrincipal = this.props.debtTotal - value;
+    this.setState({ paymentAmount: value });
+    this.props.handleChange('debtPrincipal', +newPrincipal);
   };
 
-  // handleReset = () => document.location.reload();
+  handleReset = () => document.location.reload();
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -35,8 +35,8 @@ export default class Payment extends React.Component {
       const newPayment = {
         id: Date.now(),
         date: currentDate,
-        paymentAmount: Number(this.state.paymentAmount),
-        totalLeft: Number(this.props.debtTotal) - Number(this.state.paymentAmount),
+        paymentAmount: +this.state.paymentAmount,
+        totalLeft: +this.props.debtTotal - +this.state.paymentAmount,
       };
 
       if (this.state.paymentAmount > this.props.debtTotal) {
@@ -56,40 +56,47 @@ export default class Payment extends React.Component {
 
   componentDidUpdate() {
     if (this.props.debtTotal <= 0) {
-      this.props.handleOpen();
+      this.props.handleModal(true);
       this.setState({ paymentBtnVisible: false, resetBtnVisible: true });
-      this.props.setPrincipal('-');
+      this.props.handleChange('debtPrincipal', '-');
       this.props.debtUpdateHandler();
     }
   }
 
   render() {
+    const buttons = [
+      { id: 1, clickEvent: this.handleSubmit, classes: `btn paymentBtn ${this.state.paymentBtnVisible ? '' : 'hidden'}`, text: 'Make Payment' },
+      { id: 2, clickEvent: this.handleReset, classes: `btn resetBtn ${this.state.resetBtnVisible ? '' : 'hidden'}`, text: 'Start Another Loan' },
+    ];
     return (
       <div className='paymentContainer'>
         <div className='makePayment'>
           <h1>Manage your Account</h1>
           <form>
             <div className={`inputContainer paymentInput ${this.state.paymentAlert ? 'alert' : ''}`}>
-              <label htmlFor='newPaymentInput' className='inputLabel'>
+              <label htmlFor='newPayment' className='inputLabel'>
                 $
               </label>
               <input
-                id='newPaymentInput'
+                id='newPayment'
+                name='newPayment'
                 className='formInput'
                 type='text'
                 placeholder='Payment Amount'
                 value={this.state.paymentAmount}
-                onChange={(e) => this.handlePrincipal(e.target.value)}
+                onChange={this.handleInputs}
                 required
               />
             </div>
             <div className={`alertText ${this.state.paymentAlert ? '' : 'hiddenAlert'}`}>Minimum Payment is Required</div>
-            <button onClick={this.handleSubmit} className={`btn paymentBtn ${this.state.paymentBtnVisible ? '' : 'hidden'}`}>
-              Make Payment
-            </button>
-            <button onClick={this.handleReset} className={`btn resetBtn ${this.state.resetBtnVisible ? '' : 'hidden'}`}>
-              Start Another Loan
-            </button>
+            {buttons.map((button) => {
+              const { id, clickEvent, classes, text } = button;
+              return (
+                <button onClick={clickEvent} className={classes} key={id}>
+                  {text}
+                </button>
+              );
+            })}
           </form>
         </div>
         <PaymentList payments={this.state.paymentArray}></PaymentList>

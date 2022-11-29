@@ -11,22 +11,7 @@ export default class Form extends React.Component {
     };
   }
 
-  handleSwitcher = (e) => {
-    e.preventDefault();
-
-    if (document.querySelector(`.switcherBtn.active`) !== null) {
-      document.querySelector(`.switcherBtn.active`).classList.remove('active');
-    }
-    e.target.classList.add('active');
-    this.setState({ termMonths: e.target.value });
-  };
-
-  handlePrincipal = (debtPrincipal) => {
-    this.props.setPrincipal(Number(debtPrincipal));
-  };
-  handleInterest = (interestRate) => {
-    this.props.setInterestRate(Number(interestRate) / Math.pow(10, 2));
-  };
+  handleInputs = ({ target: { name, value } }) => this.props.handleChange(name, +value);
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -34,21 +19,24 @@ export default class Form extends React.Component {
   };
 
   render() {
+    const inputs = [
+      { id: 'debtPrincipal', label: '$', placeholder: 'Loan Amount' },
+      { id: 'interestRate', label: '%', placeholder: 'Interest Rate' },
+    ];
     return (
       <div>
         <form className='initialForm' onSubmit={this.handleSubmit}>
-          <div className='inputContainer'>
-            <label htmlFor='debtPrincipalInput' className='inputLabel'>
-              $
-            </label>
-            <input id='debtPrincipalInput' className='formInput' type='text' onChange={(e) => this.handlePrincipal(e.target.value)} placeholder='Loan Amount' required />
-          </div>
-          <div className='inputContainer'>
-            <label htmlFor='interestRateInput' className='inputLabel'>
-              %
-            </label>
-            <input id='interestRateInput' className='formInput' type='text' onChange={(e) => this.handleInterest(e.target.value)} placeholder='Interest Rate' required />
-          </div>
+          {inputs.map((item) => {
+            const { id, label, placeholder } = item;
+            return (
+              <div className='inputContainer' key={id}>
+                <label htmlFor={id} className='inputLabel'>
+                  {label}
+                </label>
+                <input id={id} name={id} className='formInput' type='text' onChange={this.handleInputs} placeholder={placeholder} required />
+              </div>
+            );
+          })}
           <button className='btn formBtn'>Calculate</button>
         </form>
       </div>

@@ -6,16 +6,17 @@ export default class Modal extends Component {
     super();
   }
 
+  handleClose = () => this.props.handleModal(false);
+
   handleReset = () => document.location.reload();
 
   render() {
-    const { handleClose, show } = this.props;
-    const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+    const showHideClassName = this.props.show ? 'modal display-block' : 'modal display-none';
     return (
       <div className={showHideClassName}>
         <section className='modal-main'>
           <div>
-            <button className='btn closeBtn' onClick={handleClose}>
+            <button className='btn closeBtn' onClick={this.handleClose}>
               X
             </button>
           </div>
