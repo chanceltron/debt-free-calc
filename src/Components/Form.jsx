@@ -8,7 +8,6 @@ export default class Form extends React.Component {
     this.state = {
       debtPrincipal: 0,
       interestRate: 0,
-      termMonths: 12,
     };
   }
 
@@ -22,20 +21,16 @@ export default class Form extends React.Component {
     this.setState({ termMonths: e.target.value });
   };
 
+  handlePrincipal = (debtPrincipal) => {
+    this.props.setPrincipal(Number(debtPrincipal));
+  };
+  handleInterest = (interestRate) => {
+    this.props.setInterestRate(Number(interestRate) / Math.pow(10, 2));
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
-    const { debtPrincipal, interestRate, termMonths } = this.state;
-
-    const interestRateCalc = interestRate / Math.pow(10, 2);
-    const interest = interestRateCalc * debtPrincipal;
-    const debtTotalCalc = Number(interest) + Number(debtPrincipal);
-    const debtTotal = debtTotalCalc.toFixed(2);
-
-    const dividedNum = debtTotal / termMonths;
-    const monthlyPaymentAmnt = dividedNum.toFixed(2);
-
-    this.props.debtUpdateHandler(Number(debtTotal));
-    this.props.paymentUpdateHandler(Number(monthlyPaymentAmnt));
+    this.props.debtUpdateHandler();
   };
 
   render() {
@@ -43,25 +38,16 @@ export default class Form extends React.Component {
       <div>
         <form className='initialForm' onSubmit={this.handleSubmit}>
           <div className='inputContainer'>
-            <label htmlFor='debtPrincipal' className='inputLabel'>
+            <label htmlFor='debtPrincipalInput' className='inputLabel'>
               $
             </label>
-            <input className='formInput' type='text' onChange={({ target: { value } }) => this.setState({ debtPrincipal: value })} placeholder='Loan Amount' required />
+            <input id='debtPrincipalInput' className='formInput' type='text' onChange={(e) => this.handlePrincipal(e.target.value)} placeholder='Loan Amount' required />
           </div>
           <div className='inputContainer'>
-            <label htmlFor='interestRate' className='inputLabel'>
+            <label htmlFor='interestRateInput' className='inputLabel'>
               %
             </label>
-            <input className='formInput' type='text' onChange={({ target: { value } }) => this.setState({ interestRate: value })} placeholder='Interest Rate' required />
-          </div>
-
-          <div className='buttonGroup'>
-            <button onClick={this.handleSwitcher} value='12' className='switcherBtn active'>
-              12 Mo.
-            </button>
-            <button onClick={this.handleSwitcher} value='24' className='switcherBtn'>
-              24 Mo.
-            </button>
+            <input id='interestRateInput' className='formInput' type='text' onChange={(e) => this.handleInterest(e.target.value)} placeholder='Interest Rate' required />
           </div>
           <button className='btn formBtn'>Calculate</button>
         </form>

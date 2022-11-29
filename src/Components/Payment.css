@@ -6,7 +6,7 @@
 }
 
 .paymentBtn {
-  margin: 1rem 0;
+  margin: 0;
   padding: 1em 2em;
   background-color: #4caf50;
   color: #ffffff;
@@ -20,7 +20,7 @@
 }
 
 .resetBtn {
-  margin: 1rem 0;
+  margin: 0;
   padding: 1em 2em;
   background-color: #6b6dd7;
   color: #ffffff;
@@ -39,6 +39,17 @@
 .inputContainer.alert {
   border-color: #d85854;
   color: #eb2821;
+}
+
+.alertText {
+  color: #d85854;
+  margin: 0.5rem 0;
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+.hiddenAlert {
+  color: transparent;
 }
 
 .hidden {

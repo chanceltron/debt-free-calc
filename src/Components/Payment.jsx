@@ -14,9 +14,10 @@ export default class Payment extends React.Component {
     };
   }
 
-  completeHandler = () => {
-    this.setState({ paymentBtnVisible: false, resetBtnVisible: true });
-    this.props.debtUpdateHandler('-');
+  handlePrincipal = (payment) => {
+    const newPrincipal = this.props.debtTotal - payment;
+    this.setState({ paymentAmount: payment });
+    this.props.setPrincipal(Number(newPrincipal));
   };
 
   handleReset = () => document.location.reload();
@@ -27,9 +28,9 @@ export default class Payment extends React.Component {
     const currentDate = today.getMonth() + 1 + '/' + today.getDate() + '/' + today.getFullYear();
 
     if (this.state.paymentAmount < this.props.monthlyPayment) {
-      this.setState({ paymentAlert: true, paymentAmount: 'Looks like your payment is a little short. Please try again.' });
+      this.setState({ paymentAlert: true });
     } else if (isNaN(this.state.paymentAmount)) {
-      this.setState({ paymentAlert: true, paymentAmount: 'Please enter a valid number' });
+      this.setState({ paymentAlert: true });
     } else {
       const newPayment = {
         id: Date.now(),
@@ -37,6 +38,10 @@ export default class Payment extends React.Component {
         paymentAmount: Number(this.state.paymentAmount),
         totalLeft: Number(this.props.debtTotal) - Number(this.state.paymentAmount),
       };
+
+      if (this.state.paymentAmount > this.props.debtTotal) {
+        newPayment.paymentAmount = this.props.debtTotal;
+      }
 
       this.props.debtUpdateHandler(newPayment.totalLeft);
 
@@ -46,11 +51,15 @@ export default class Payment extends React.Component {
         this.setState({ paymentAlert: false });
       }
     }
+    this.setState({ paymentAmount: '' });
   };
 
   componentDidUpdate() {
     if (this.props.debtTotal <= 0) {
-      this.completeHandler();
+      this.props.handleOpen();
+      this.setState({ paymentBtnVisible: false, resetBtnVisible: true });
+      this.props.setPrincipal('-');
+      this.props.debtUpdateHandler();
     }
   }
 
@@ -67,12 +76,13 @@ export default class Payment extends React.Component {
               <input
                 className='formInput'
                 type='text'
-                value={this.state.paymentAmount}
                 placeholder='Payment Amount'
-                onChange={({ target: { value } }) => this.setState({ paymentAmount: value })}
+                value={this.state.paymentAmount}
+                onChange={(e) => this.handlePrincipal(e.target.value)}
                 required
               />
             </div>
+            <div className={`alertText ${this.state.paymentAlert ? '' : 'hiddenAlert'}`}>Minimum Payment is Required</div>
             <button onClick={this.handleSubmit} className={`btn paymentBtn ${this.state.paymentBtnVisible ? '' : 'hidden'}`}>
               Make Payment
             </button>
