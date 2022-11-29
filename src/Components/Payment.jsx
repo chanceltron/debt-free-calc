@@ -20,7 +20,7 @@ export default class Payment extends React.Component {
     this.props.setPrincipal(Number(newPrincipal));
   };
 
-  handleReset = () => document.location.reload();
+  // handleReset = () => document.location.reload();
 
   handleSubmit = (e) => {
     e.preventDefault();

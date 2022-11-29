@@ -6,17 +6,25 @@ export default class Modal extends Component {
     super();
   }
 
+  handleReset = () => document.location.reload();
+
   render() {
-    const { handleClose, show, children } = this.props;
+    const { handleClose, show } = this.props;
     const showHideClassName = show ? 'modal display-block' : 'modal display-none';
     return (
       <div className={showHideClassName}>
         <section className='modal-main'>
           <div>
-            <h1>You are Debt Free!</h1>
+            <button className='btn closeBtn' onClick={handleClose}>
+              X
+            </button>
           </div>
-          <button type='button' onClick={handleClose}>
-            Close
+          <div className='modalHeader'>
+            <h1>Congratulations!</h1>
+            <h2>You are Debt Free!</h2>
+          </div>
+          <button className='btn resetBtn' type='button' onClick={this.handleReset}>
+            Start a New Loan
           </button>
         </section>
       </div>

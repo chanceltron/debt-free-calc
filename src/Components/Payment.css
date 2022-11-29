@@ -19,22 +19,22 @@
   margin: 0 auto;
 }
 
-.resetBtn {
+/* .resetBtn {
   margin: 0;
   padding: 1em 2em;
   background-color: #6b6dd7;
   color: #ffffff;
   font-size: 1.1rem;
   font-weight: 500;
-}
+} */
 
 .paymentBtn:hover {
   background-color: #388e3c;
 }
 
-.resetBtn:hover {
+/* .resetBtn:hover {
   background-color: #4e4fa1;
-}
+} */
 
 .inputContainer.alert {
   border-color: #d85854;
