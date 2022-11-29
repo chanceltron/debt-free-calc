@@ -70,10 +70,11 @@ export default class Payment extends React.Component {
           <h1>Manage your Account</h1>
           <form>
             <div className={`inputContainer paymentInput ${this.state.paymentAlert ? 'alert' : ''}`}>
-              <label htmlFor='debtPrincipal' className='inputLabel'>
+              <label htmlFor='newPaymentInput' className='inputLabel'>
                 $
               </label>
               <input
+                id='newPaymentInput'
                 className='formInput'
                 type='text'
                 placeholder='Payment Amount'
