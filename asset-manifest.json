@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react101-debt-free-calc/static/css/main.c0b4403c.css",
+    "main.js": "/react101-debt-free-calc/static/js/main.7494005f.js",
+    "static/js/787.bb34aa90.chunk.js": "/react101-debt-free-calc/static/js/787.bb34aa90.chunk.js",
+    "index.html": "/react101-debt-free-calc/index.html",
+    "main.c0b4403c.css.map": "/react101-debt-free-calc/static/css/main.c0b4403c.css.map",
+    "main.7494005f.js.map": "/react101-debt-free-calc/static/js/main.7494005f.js.map",
+    "787.bb34aa90.chunk.js.map": "/react101-debt-free-calc/static/js/787.bb34aa90.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0b4403c.css",
+    "static/js/main.7494005f.js"
+  ]
+}
