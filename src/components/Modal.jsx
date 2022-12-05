@@ -8,8 +8,6 @@ export default class Modal extends Component {
 
   handleClose = () => this.props.handleModal(false);
 
-  handleReset = () => document.location.reload();
-
   render() {
     const showHideClassName = this.props.show ? 'modal display-block' : 'modal display-none';
     return (
@@ -24,7 +22,7 @@ export default class Modal extends Component {
             <h1>Congratulations!</h1>
             <h2>You are Debt Free!</h2>
           </div>
-          <button className='btn resetBtn' type='button' onClick={this.handleReset}>
+          <button className='btn resetBtn' type='button' onClick={() => this.props.handleReset()}>
             Start a New Loan
           </button>
         </section>

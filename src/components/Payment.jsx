@@ -20,8 +20,6 @@ export default class Payment extends React.Component {
     this.props.handleChange('debtPrincipal', +newPrincipal);
   };
 
-  handleReset = () => document.location.reload();
-
   handleSubmit = (e) => {
     e.preventDefault();
     const today = new Date();
@@ -66,7 +64,7 @@ export default class Payment extends React.Component {
   render() {
     const buttons = [
       { id: 1, clickEvent: this.handleSubmit, classes: `btn paymentBtn ${this.state.paymentBtnVisible ? '' : 'hidden'}`, text: 'Make Payment' },
-      { id: 2, clickEvent: this.handleReset, classes: `btn resetBtn ${this.state.resetBtnVisible ? '' : 'hidden'}`, text: 'Start Another Loan' },
+      { id: 2, clickEvent: () => this.props.handleReset(), classes: `btn resetBtn ${this.state.resetBtnVisible ? '' : 'hidden'}`, text: 'Start Another Loan' },
     ];
     return (
       <div className='paymentContainer'>

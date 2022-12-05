@@ -7,17 +7,27 @@ import Payment from './components/Payment';
 import Modal from './components/Modal';
 import readableFormat from './functions/readableFormat';
 
+const INIT_STATE = {
+  debtPrincipal: '-',
+  interestRate: '-',
+  debtTotal: '-',
+  monthlyPayment: '-',
+  modalVisible: false,
+};
+
 export default class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-      debtPrincipal: '-',
-      interestRate: '-',
-      debtTotal: '-',
-      monthlyPayment: '-',
-      modalVisible: false,
-    };
+    this.state = INIT_STATE;
   }
+
+  handleReset = () => {
+    // ! Need to go back and make this function correctly for both Modal and Payment components
+    // this.setState(INIT_STATE);
+
+    // ? This is a temporary workaround
+    document.location.reload();
+  };
 
   handleChange = (name, value) => {
     const toFixed = Number(value).toFixed(2);
@@ -43,7 +53,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Modal show={this.state.modalVisible} handleModal={this.handleModal} />
+        <Modal show={this.state.modalVisible} handleModal={this.handleModal} handleReset={this.handleReset} />
 
         <div className='App'>
           <h2 className='appHeader'>Debt-Free Calculator</h2>
@@ -67,6 +77,7 @@ export default class App extends React.Component {
             debtTotal={this.state.debtTotal}
             monthlyPayment={this.state.monthlyPayment}
             handleModal={this.handleModal}
+            handleReset={this.handleReset}
           />
         </div>
       </div>
