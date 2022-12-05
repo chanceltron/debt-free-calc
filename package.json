@@ -1,5 +1,6 @@
 {
   "name": "react101-debt-free-calc",
+  "homepage": "https://<github_username>.github.io/<app_repo>",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
